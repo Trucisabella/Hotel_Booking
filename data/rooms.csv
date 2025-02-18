@@ -1,0 +1,11 @@
+room_number,type,price,availability
+1,single,100,available
+2,single,100,available
+3,double,150,available
+4,double,150,available
+5,suite,200,available
+6,suite,200,available
+7,single,100,occupied
+8,double,150,occupied
+9,suite,200,occupied
+10,single,100,available
