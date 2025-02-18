@@ -1,1 +1,55 @@
 <!-- Main HTML file for the app -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <title>Hotel</title>
+</head>
+
+<body>
+    <header id="header">
+        <a href="#">
+            <h1>Hotel</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+        <h2>Search for Rooms: </h2>
+        <form action="/search" method="GET">
+            <label for="roomType">Room Type: </label>
+            <select name="roomType" id="roomType" required>
+                <option value="Single">Single</option>
+                <option value="Double">Double</option>
+                <option value="Suite">Suite</option>
+            </select>
+            <button type="submit">Find</button>
+        </form>
+        <h2>Available Rooms: </h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Room Number</th>
+                    <th>Room Type</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2021 Hotel. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
