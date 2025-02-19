@@ -1,3 +1,8 @@
+/** CSCI 2170 Assignment 2 
+* Author: Truc Tran (B00812018)
+* Description: This is the server-side script for the hotel booking system.
+*/
+
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
@@ -85,7 +90,8 @@ const server = http.createServer((req, res) => {
             }
             roomDetails += `</tbody></table>`;
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(htmlFile.replace('<div id="roomDetails"></div>', `<div id="roomDetails">${roomDetails}</div>`));
+            // res.end(htmlFile.replace('<div id="roomDetails"></div>', `<div id="roomDetails">${roomDetails}</div>`));
+            res.end(roomDetails);
             break;
 
         case '/booking':
