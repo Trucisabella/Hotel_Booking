@@ -98,16 +98,49 @@ const server = http.createServer((req, res) => {
             req.on("end", () => {
                 reqParams = querystring.parse(reqData);
                 console.log("reqParams: ", reqParams);
+                let isValid = true;
                 const checkInDate = new Date(reqParams.checkIn).toISOString().split("T")[0];
-
                 const checkOutDate = new Date(reqParams.checkOut).toISOString().split("T")[0];
+                const today = new Date().toISOString().split("T")[0];
+                const roomID = reqParams.roomNum;
+                const rooms = csvFile.split('\n').map(room => room.split(','));
+                const room = rooms.find(room => room[0] === roomID);
 
-
-                if (checkInDate > checkOutDate) {
-                    res.writeHead(400, { "Content-Type": "text/html" });
-                    res.end("<h3>Error: Check-in date cannot be after check-out date!</h3>");
+                // Check if room number is valid
+                if (room) {
+                    // Check if associated room type is correct
+                    if (room[1] === reqParams.roomType.toLowerCase()) {
+                        // Check if the room is available
+                        if (!room[3].includes('available')) {
+                            isValid = false;
+                            res.writeHead(400, { "Content-Type": "text/html" });
+                            res.end(`<h3>Room ${roomID} is not available</h3>`);
+                        }
+                    }
+                    else {
+                        isValid = false;
+                        res.writeHead(400, { "Content-Type": "text/html" });
+                        res.end(`<h3>Invalid Room Number for ${reqParams.roomType} type</h3>`);
+                    }
                 }
                 else {
+                    isValid = false;
+                    res.writeHead(400, { "Content-Type": "text/html" });
+                    res.end("<h3>Invalid Room Number</h3>");
+                }
+
+                // Check if check-in date is valid
+                if (checkInDate < today || checkInDate > checkOutDate) {
+                    res.writeHead(400, { "Content-Type": "text/html" });
+                    if (checkInDate < today) {
+                        res.end("<h3>Invalid Check-in date! Please choose a date from today onwards.</h3>");
+                    }
+                    else {
+                        res.end("<h3>Check-in date cannot be after Check-out date</h3>");
+                    }
+                    isValid = false;
+                }
+                if (isValid) {
                     let bookingInfo = {
                         Name: reqParams.username,
                         RoomType: reqParams.roomType,
