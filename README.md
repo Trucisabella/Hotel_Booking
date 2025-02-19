@@ -1,11 +1,8 @@
-# Assignment 2 - Simple Web Application
+# Bamboo Hotel
+## Information
 
-## Student Information
-
-- **Name**: Truc Tran
-- **Student ID**: B00812018
+- **Author**: Truc Tran
 - **Date Created**: February 17, 2025
-- **Date Updated**: February 19, 2025
 
 ## Application Name and Description
 Application Name: Bamboo Hotel\
@@ -29,7 +26,7 @@ Description: This is a simple hotel booking application that allows users to sea
 - Booking data validation
 - User-friendly application
 
-## Additional Details [As Needed]
+## Additional Details
 The data used in this application `data/rooms.csv` is fictional data was manually created for this project. Any resemblance to real hotels, locations, or prices is purely coincidental.
 
 ## Citations & Acknowledgements
