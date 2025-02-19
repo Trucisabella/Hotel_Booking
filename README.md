@@ -1,7 +1,7 @@
 # Bamboo Hotel
 ## Information
 
-- **Author**: Truc Tran
+- **Author**: Ella Tran
 - **Date Created**: February 17, 2025
 
 ## Application Name and Description
